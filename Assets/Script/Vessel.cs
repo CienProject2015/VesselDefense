@@ -31,22 +31,22 @@ public class Vessel: MonoBehaviour {
 	void Update () {
 
 		if (Input.GetKey (KeyCode.W)) {
-			this.rigidbody.velocity += Vector3.forward * this.velocityX;
+			this.rigidbody.velocity += this.rigidbody.transform.forward * this.velocityX;
 		} else if (Input.GetKey (KeyCode.S)) {
-			this.rigidbody.velocity += Vector3.back * this.velocityX; 
+			this.rigidbody.velocity += this.rigidbody.transform.forward * this.velocityX * -1.0f; 
 		}
-		if (Mathf.Abs(this.rigidbody.velocity.x) < 0.05) {
+		if (Mathf.Abs(this.rigidbody.velocity.x) < 0.04) {
 			Vector3 temp = this.rigidbody.velocity;
 			temp.x = 0.0f;
 			this.rigidbody.velocity = temp;
 		}
 
 		if (Input.GetKey (KeyCode.A)) {
-			this.rigidbody.velocity += Vector3.left * this.velocityZ;
+			this.rigidbody.velocity += this.rigidbody.transform.right * this.velocityZ * -1.0f;
 		} else if (Input.GetKey (KeyCode.D)) {
-			this.rigidbody.velocity += Vector3.right * this.velocityZ; 
+			this.rigidbody.velocity += this.rigidbody.transform.right * this.velocityZ;
 		}
-		if (Mathf.Abs(this.rigidbody.velocity.z) < 0.05) {
+		if (Mathf.Abs(this.rigidbody.velocity.z) < 0.04) {
 			Vector3 temp = this.rigidbody.velocity;
 			temp.z = 0.0f;
 			this.rigidbody.velocity = temp;

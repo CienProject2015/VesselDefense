@@ -10,7 +10,7 @@ public class VesselCamera : MonoBehaviour {
 	public GameObject myVessel;
 	// Use this for initialization
 	void Start () {
-		this.cameraPosition = new Vector3 (0, 10, -5);
+		this.cameraPosition = new Vector3 (0, 12, -12);
 		this.cameraVelocity = new Vector3 (0, 0, 0);
 	}
 	
@@ -21,8 +21,8 @@ public class VesselCamera : MonoBehaviour {
 
 	void SetPosition(){
 		this.cameraPosition = this.myVessel.rigidbody.position;
-		this.cameraPosition.y += 10.0f;
-		this.cameraPosition.z -= 5.0f;
+		this.cameraPosition.y += 12.0f;
+		this.cameraPosition.z -= 12.0f;
 		this.rigidbody.position = this.cameraPosition;
 	}
 
