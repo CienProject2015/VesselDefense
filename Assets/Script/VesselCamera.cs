@@ -16,8 +16,6 @@ public class VesselCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		//this.rigidbody.transform.position = this.cameraPosition;
-		//this.rigidbody.velocity = this.cameraVelocity;
 		SetPosition ();
 	}
 
@@ -29,7 +27,7 @@ public class VesselCamera : MonoBehaviour {
 	}
 
 	void SetVelocity(Vector3 vel){
-		this.cameraVelocity = vel;
+		this.rigidbody.velocity = this.myVessel.rigidbody.velocity;
 	}
 
 }
