@@ -9,7 +9,7 @@ Test Of Vessel
 
 메뉴: Edit > Project Settings > Editor > (Inspector 창)
 
-![](/images/2013/08-21-unity3d_git_1.png)
+![](/unity_guide.png)
 
 1. 버전 관리 모드 변경: Version Control > Mode > Meta Files
 2. 애셋 직렬화 모드 변경: Asset Serialization > Mode > Force Text
