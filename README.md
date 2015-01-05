@@ -9,9 +9,9 @@ Test Of Vessel
 
 메뉴: Edit > Project Settings > Editor > (Inspector 창)
 
-![](/images/2013/08-21-unity3d_git_1.png)
+![](/unity_guide.png)
 
-1. 버전 관리 모드 변경: Version Control > Mode > Meta Files
+1. 버전 관리 모드 변경: Version Control > Mode > hideden Meta Files
 2. 애셋 직렬화 모드 변경: Asset Serialization > Mode > Force Text
 
 공식 문서인 [Using External Version Control Systems with Unity](http://docs.unity3d.com/Documentation/Manual/ExternalVersionControlSystemSupport.html)에는 Version Control Mode를 Asset Server에서  Meta Files로 바꾸라는 설명 뿐인데, 애셋 직렬화 모드를 변경하지 않으면 씬(Scene) 파일이 바이너리 포맷으로 유지된다.
