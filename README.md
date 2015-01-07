@@ -1,7 +1,6 @@
-VesselTest
+VesselDefense
 ==========
 
-Test Of Vessel
 
 ## 외부 버전 관리 시스템을 이용할 수 있도록 설정 변경하기
 
