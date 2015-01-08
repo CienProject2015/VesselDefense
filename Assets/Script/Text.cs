@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
-public class VesselCamera : MonoBehaviour {
-
-	public GameObject myVessel;
+public class Text : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
@@ -13,8 +10,6 @@ public class VesselCamera : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
-		//SetPosition ();
+	
 	}
-
 }

@@ -3,37 +3,31 @@ using System.Collections;
 //using System.Timers;
 
 public class Vessel: MonoBehaviour {
-	private float velocityX, velocityZ;
-	private Vector3 vesselPosition;
-	private Vector3 vesselVelocity;
-	private Quaternion vesselQuaternion;
-	private Quaternion targetQuaternion;
+	private float forceX, forceZ;
+	private float torqueY;
 
 	public GameObject vesselCamera;
-	public GameObject vesselRotationer;
+	public GameObject cameraObj;
 	public int HP;
-	public Material vesselMaterial;
 
 	//private Timer timer;
 	// Use this for initialization
 	void Start () {
-		this.velocityX = 0.05f;
-		this.velocityZ = 0.05f;
+		this.rigidbody.mass = 10;
+		this.forceX = 15.0f;
+		this.forceZ = 15.0f;
 
-		this.vesselPosition.x = this.rigidbody.position.x;
-		this.vesselPosition.z = this.rigidbody.position.z;
-		this.vesselVelocity = this.rigidbody.velocity;
-		this.vesselPosition.y = 0.0f;
-		//this.timer = new Timer ();
+		this.torqueY = 1.0f;
+		//this.timer = new Timer ();	
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
 		if (Input.GetKey (KeyCode.W)) {
-			this.rigidbody.velocity += this.rigidbody.transform.forward * this.velocityX;
+			this.rigidbody.AddForce(this.transform.forward * this.forceX);
 		} else if (Input.GetKey (KeyCode.S)) {
-			this.rigidbody.velocity += this.rigidbody.transform.forward * this.velocityX * -1.0f; 
+			this.rigidbody.AddForce(-this.transform.forward * this.forceX); 
 		}
 		if (Mathf.Abs(this.rigidbody.velocity.x) < 0.04) {
 			Vector3 temp = this.rigidbody.velocity;
@@ -42,9 +36,9 @@ public class Vessel: MonoBehaviour {
 		}
 
 		if (Input.GetKey (KeyCode.A)) {
-			this.rigidbody.velocity += this.rigidbody.transform.right * this.velocityZ * -1.0f;
+			this.rigidbody.AddForce(-this.transform.right * this.forceZ);
 		} else if (Input.GetKey (KeyCode.D)) {
-			this.rigidbody.velocity += this.rigidbody.transform.right * this.velocityZ;
+			this.rigidbody.AddForce(this.transform.right * this.forceZ);
 		}
 		if (Mathf.Abs(this.rigidbody.velocity.z) < 0.04) {
 			Vector3 temp = this.rigidbody.velocity;
@@ -52,28 +46,28 @@ public class Vessel: MonoBehaviour {
 			this.rigidbody.velocity = temp;
 		}
 
-		rotateVessel ();
+		if(Input.GetKey(KeyCode.Q)) 
+			this.rigidbody.AddTorque(new Vector3(0,-torqueY,0));
+		if(Input.GetKey(KeyCode.E)) 
+			this.rigidbody.AddTorque(new Vector3(0,torqueY,0));
+
+		if(!Input.GetKey(KeyCode.Q) && !Input.GetKey(KeyCode.E)){
+			if(this.rigidbody.angularVelocity.y < -0.5f)
+				this.rigidbody.AddTorque(new Vector3(0,torqueY,0));
+			else if(this.rigidbody.angularVelocity.y > 0.5f)
+				this.rigidbody.AddTorque(new Vector3(0,-torqueY,0));
+			else
+				this.rigidbody.angularVelocity = Vector3.Lerp(this.rigidbody.angularVelocity, Vector3.zero, 0.1f);
+		}
+
+
+
+
 	}
 	public void Damage(int dam){
 		this.HP -= dam;
 	}
 
-	private void SetPlayerDirection()
-	{
 
-
-	}
-
-	private void SetVesselDirection(Quaternion target){
-
-		this.vesselQuaternion = this.transform.rotation;
-		this.targetQuaternion = target;
-
-	}
-
-	void rotateVessel(){
-		Quaternion tempQuaternion = Quaternion.Lerp (this.vesselQuaternion, this.targetQuaternion, 0.02f);
-		this.rigidbody.rotation = tempQuaternion;
-	}
 
 }
