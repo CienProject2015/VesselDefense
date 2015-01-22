@@ -100,11 +100,11 @@ Transform:
   m_PrefabParentObject: {fileID: 400004, guid: 9d4133d5d30b644bd87802a347eaccbe, type: 2}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 186450877}
-  m_LocalRotation: {x: .0732889175, y: .047357589, z: .0527898073, w: .994786024}
-  m_LocalPosition: {x: .819108307, y: .893211842, z: 1.55200958}
+  m_LocalRotation: {x: .077729322, y: .136411786, z: .0460019782, w: .986526132}
+  m_LocalPosition: {x: 4.4452343, y: 3.53803205, z: .97799778}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 2100007002}
+  m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!81 &186450879
 AudioListener:
@@ -260,7 +260,7 @@ GameObject:
   - 114: {fileID: 404603067}
   m_Layer: 0
   m_Name: LaserCollection
-  m_TagString: Untagged
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -272,11 +272,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 404603061}
   m_LocalRotation: {x: 0, y: -.0897129327, z: 0, w: .995967686}
-  m_LocalPosition: {x: .947077096, y: 0, z: 4.44469976}
+  m_LocalPosition: {x: 1, y: 0, z: 4.90242052}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2100007002}
-  m_RootOrder: 4
+  m_RootOrder: 3
 --- !u!54 &404603063
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -353,7 +353,7 @@ GameObject:
   - 120: {fileID: 405017513}
   - 114: {fileID: 405017512}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: left
   m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -382,8 +382,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a01ebc4e47dc04183aca073880e043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LaserPoint: {fileID: 0}
-  Laser: {fileID: 0}
 --- !u!120 &405017513
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -429,8 +427,8 @@ GameObject:
   - 65: {fileID: 1286992824}
   - 23: {fileID: 1286992823}
   m_Layer: 0
-  m_Name: LeftLaser
-  m_TagString: Untagged
+  m_Name: RightLaser
+  m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -637,7 +635,7 @@ GameObject:
   - 65: {fileID: 1832718102}
   - 23: {fileID: 1832718101}
   m_Layer: 0
-  m_Name: RightLaser
+  m_Name: LeftLaser
   m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -706,7 +704,7 @@ GameObject:
   - 120: {fileID: 2002378511}
   - 114: {fileID: 2002378510}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: right
   m_TagString: Laser
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -723,8 +721,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7a01ebc4e47dc04183aca073880e043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LaserPoint: {fileID: 0}
-  Laser: {fileID: 0}
 --- !u!120 &2002378511
 LineRenderer:
   m_ObjectHideFlags: 0
@@ -803,7 +799,6 @@ Transform:
   - {fileID: 1822721056}
   - {fileID: 1286992822}
   - {fileID: 1832718100}
-  - {fileID: 186450878}
   - {fileID: 404603062}
   m_Father: {fileID: 0}
   m_RootOrder: 0

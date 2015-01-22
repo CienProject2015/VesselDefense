@@ -1,8 +1,8 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class LaserCollection : MonoBehaviour {
-	private bool FirstConnect = false;
+	private bool connect = false;
 	// Use this for initialization
 	void Start () {
 			
@@ -10,11 +10,14 @@ public class LaserCollection : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	
+		if (connect == true) {
+				}
+		else {
+				}
 	}
 
 	public void ApplyLaser() {
-		FirstConnect = true;	
+		connect = true;	
 		
 	}
 }
