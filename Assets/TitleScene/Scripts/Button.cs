@@ -24,10 +24,13 @@ public class Button : MonoBehaviour{
 	void Start () {
 		ScreenW = Camera.mainCamera.GetScreenWidth();
 		ScreenH = Camera.mainCamera.GetScreenHeight();
-		inx = ScreenW * transform.position.x + PixelX;
-		iny = ScreenH * (1-transform.position.y) - PixelY - height;
-		vx = ScreenW * transform.localScale.x + width;
-		vy = ScreenH * transform.localScale.y + height;
+		vx = ScreenW * transform.localScale.x;
+		vy = ScreenH * transform.localScale.y;
+		inx = ScreenW * transform.position.x + PixelX - vx/2;
+		iny = ScreenH * (1-transform.position.y) - PixelY - height - vy/2;
+		vx += width;
+		vy += height;
+
 	}
 	
 	void Update () {
@@ -37,14 +40,15 @@ public class Button : MonoBehaviour{
 			if(inx < inputX && inputX < inx + vx){
 				if(iny < inputY && inputY < iny + vy){
 					buttonDown = true;
-					if(SendFuncObject){
-						Click();
-					}
+
 				}
 			}
 		}else{
 			if(buttonDown){
 				buttonDown = false;
+				if(SendFuncObject){
+					Click();
+				}
 			}
 		}
 	}

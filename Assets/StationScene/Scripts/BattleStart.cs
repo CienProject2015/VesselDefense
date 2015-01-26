@@ -6,6 +6,10 @@ public class BattleStart : MonoBehaviour {
 		Application.LoadLevel("BattleScene");
 	}
 
+
+	void GoLaboratory(){
+		Application.LoadLevel("LaboratoryScene");
+	}
 	// Use this for initialization
 	void Start () {
 	
