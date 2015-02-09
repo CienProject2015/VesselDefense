@@ -4,12 +4,15 @@ using System.Collections;
 public class LaserCollection : MonoBehaviour
 {
 		private LineRenderer line;
+		private int collision = 0;
 		private float charge = 0;
+		private bool turnOnLaser = false;
 		// Use this for initialization
 		void Start ()
 		{
 				line = gameObject.GetComponent<LineRenderer> ();
 				line.enabled = false;
+				Debug.Log ("Start Laser Collecition");
 		}
 	
 		// Update is called once per frame
@@ -17,13 +20,45 @@ public class LaserCollection : MonoBehaviour
 		{
 				if (charge > 0) {
 						charge *= 0.95f;
-
+						Debug.Log ("Update : Charge = " + charge);
 				}
 		}
 
-		public void shootLaser ()
+		public void OnTriggerEnter (Collider coll)
+		{
+				Debug.Log ("OnTriggerEnter" + "충돌한 물체= " + coll.name);
+				collision = collision + 1;
+				Debug.Log ("Collision 수 = " + collision);
+				if (charge < 100) {
+						charge += 0.01f;
+				} 
+		}
+		
+		public void OnTriggerStay (Collider coll)
+		{
+				Debug.Log (coll.name);
+				if (charge < 100) {
+						charge += 0.01f;
+				} 
+		}
+		
+		public void OnTriggerExit (Collider coll)
 		{		
-				while (charge > 0) {			
+				Debug.Log ("OnTriggerExit");
+				collision = collision - 1;
+				if (collision == 0) {
+						turnOnLaser = true;
+						StopCoroutine ("FireLaser");
+						StartCoroutine ("FireLaser");
+				}
+				Debug.Log ("OnTriggerExit" + collision);
+		}
+
+		IEnumerator FireLaser ()
+		{		
+				Debug.Log ("Fire");
+				while (turnOnLaser) {	
+						Debug.Log ("While Enter");
 						line.enabled = true;
 						line.renderer.material.mainTextureOffset = new Vector2 (0, Time.time);
 						Ray ray = new Ray (transform.position, transform.forward);
@@ -37,30 +72,14 @@ public class LaserCollection : MonoBehaviour
 						} else {
 								line.SetPosition (1, ray.GetPoint (100));
 						}
-						charge -= 0.01f;
+						charge -= 0.000001f;
+						if (charge < 0) {
+								Debug.Log ("Charge is Oring ");
+								turnOnLaser = false;
+						}
+						yield return null;
 				}
-		}
-
-		public void OnTriggerEnter (Collider coll)
-		{
-
-				if (charge < 100) {
-						charge += 1;
-				} 
-		}
-		
-		public void OnTriggerStay (Collider coll)
-		{
-
-				if (charge < 100) {
-						charge += 1;
-				} 
-		}
-		
-		public void OnTriggerExit (Collider coll)
-		{		
-				Debug.Log ("Test");
-				shootLaser ();
+				line.enabled = false;
 		}
 }
 
