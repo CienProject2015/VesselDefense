@@ -31,6 +31,6 @@ public class EnemyMissile : MonoBehaviour {
 
 	void CalculateVec(){
 		go = Vector3.Normalize(target.transform.position - transform.position);
-		rigidbody.velocity += go*speed;
+		GetComponent<Rigidbody>().velocity += go*speed;
 	}
 }

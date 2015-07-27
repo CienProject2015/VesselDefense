@@ -55,7 +55,7 @@ public class EnemyAI : MonoBehaviour {
 		if(20 < Vector3.Distance(pos, transform.position)){
 			ApproachPosition(pos);
 		}else{
-			if(5<Vector3.Distance(Vector3.zero, rigidbody.velocity)){
+			if(5<Vector3.Distance(Vector3.zero, GetComponent<Rigidbody>().velocity)){
 				FarAwayPosition(pos);
 			}else{
 				SetEngineE(false);
@@ -106,9 +106,9 @@ public class EnemyAI : MonoBehaviour {
 	private void LookAtPosition(Vector3 pos){
 		if( 0<Vector3.Dot(transform.right, Vector3.Normalize(pos-transform.position))){//turn right
 			if(0.8f<Vector3.Dot(transform.forward, Vector3.Normalize(pos-transform.position))){
-				if(1<rigidbody.angularVelocity.y){
+				if(1<GetComponent<Rigidbody>().angularVelocity.y){
 					SetTorqueE(true, false);
-				}else if(rigidbody.angularVelocity.y < 0){
+				}else if(GetComponent<Rigidbody>().angularVelocity.y < 0){
 					if(Vector3.Dot(transform.forward, Vector3.Normalize(pos-transform.position))<0.999f){
 						SetTorqueE(true, true);
 					}
@@ -121,9 +121,9 @@ public class EnemyAI : MonoBehaviour {
 
 		}else{//turn left
 			if(0.8f<Vector3.Dot(transform.forward, Vector3.Normalize(pos-gameObject.transform.position))){
-				if(rigidbody.angularVelocity.y < -1){
+				if(GetComponent<Rigidbody>().angularVelocity.y < -1){
 					SetTorqueE(true, true);
-				}else if(0 < rigidbody.angularVelocity.y){
+				}else if(0 < GetComponent<Rigidbody>().angularVelocity.y){
 					if(Vector3.Dot(transform.forward, Vector3.Normalize(pos-gameObject.transform.position))<0.999f){
 						SetTorqueE(true, false);
 

@@ -29,7 +29,7 @@ public class LaserScript : MonoBehaviour
 				line.enabled = true;
 				//gameObject.GetComponent<Light> ().enabled = true;
 				while (turnOnLaser) {
-						line.renderer.material.mainTextureOffset = new Vector2 (0, Time.time);
+						line.GetComponent<Renderer>().material.mainTextureOffset = new Vector2 (0, Time.time);
 						Ray ray = new Ray (transform.position, transform.forward);
 						RaycastHit hit;
 						line.SetPosition (0, ray.origin);

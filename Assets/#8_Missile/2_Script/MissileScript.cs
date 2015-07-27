@@ -28,14 +28,14 @@ public class MissileScript : MonoBehaviour {
 			    _raderCollChk = transform.Find("Rader").gameObject.GetComponent<MissileRader>()._collChk;
 			    if(_raderCollChk == false) {
 
-		    		rigidbody.AddForce(transform.up * 10.0f);
+		    		GetComponent<Rigidbody>().AddForce(transform.up * 10.0f);
 					// magnitude is a temporary value
 					// this can change the velocity before collision, it works together with MissileRader
 
 			    }
 			    else {
 
-					rigidbody.velocity = new Vector3(0,0,0);
+					GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
 
 			    }
 			}

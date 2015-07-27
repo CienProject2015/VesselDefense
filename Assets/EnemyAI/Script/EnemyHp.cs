@@ -21,7 +21,7 @@ public class EnemyHp : MonoBehaviour {
 			gameObject.SendMessage("ZeroHP");
 		}else{
 			HpRate = (float)Hp/(float)FirstHp;
-			renderer.material.color = Color.red + Color.blue*HpRate + Color.yellow*HpRate;
+			GetComponent<Renderer>().material.color = Color.red + Color.blue*HpRate + Color.yellow*HpRate;
 			//renderer.material.
 		}
 	}

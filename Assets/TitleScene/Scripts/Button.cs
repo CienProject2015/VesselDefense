@@ -22,8 +22,8 @@ public class Button : MonoBehaviour{
 	public Texture ButtonDown;
 	
 	void Start () {
-		ScreenW = Camera.mainCamera.GetScreenWidth();
-		ScreenH = Camera.mainCamera.GetScreenHeight();
+		ScreenW = Screen.width;
+		ScreenH = Screen.height;
 		inx = ScreenW * transform.position.x + PixelX;
 		iny = ScreenH * (1-transform.position.y) - PixelY - height;
 		vx = ScreenW * transform.localScale.x + width;

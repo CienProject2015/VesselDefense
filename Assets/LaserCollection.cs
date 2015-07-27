@@ -60,7 +60,7 @@ public class LaserCollection : MonoBehaviour
 				while (turnOnLaser) {	
 						Debug.Log ("While Enter");
 						line.enabled = true;
-						line.renderer.material.mainTextureOffset = new Vector2 (0, Time.time);
+						line.GetComponent<Renderer>().material.mainTextureOffset = new Vector2 (0, Time.time);
 						Ray ray = new Ray (transform.position, transform.forward);
 						RaycastHit hit;
 						line.SetPosition (0, ray.origin);

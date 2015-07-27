@@ -45,17 +45,17 @@ public class MissileRader : MonoBehaviour {
 			_timer += Time.deltaTime;
 			if (_collChk == false) {
 
-				rigidbody.AddForce(transform.up * 10.0f); 
+				GetComponent<Rigidbody>().AddForce(transform.up * 10.0f); 
 				// magnitude is a temporary value
 				// this can change the velocity before collision, it works together with MissileScript
 			}
 			else {
 
-				rigidbody.velocity = new Vector3(0,0,0);
+				GetComponent<Rigidbody>().velocity = new Vector3(0,0,0);
 				if (_enemyFind = true && _enemy != null) {
 
-					rigidbody.AddForce(_fVec * 0.004f);
-					_missile.rigidbody.AddForce(_fVec * 0.004f);
+					GetComponent<Rigidbody>().AddForce(_fVec * 0.004f);
+					_missile.GetComponent<Rigidbody>().AddForce(_fVec * 0.004f);
 					// magnitude is a temporay value, but its operation must be needed careful
 					// may be 0.001 ~ 0.005
 					// this will change the velocity after collision

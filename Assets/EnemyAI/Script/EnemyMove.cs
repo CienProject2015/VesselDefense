@@ -32,10 +32,10 @@ public class EnemyMove : MonoBehaviour {
 		}
 		if(isMain){
 			if(EngineOn){
-				rigidbody.AddForce(transform.forward * engineForce);
+				GetComponent<Rigidbody>().AddForce(transform.forward * engineForce);
 			}
 			if(TorqueOn){
-				rigidbody.AddTorque(new Vector3(0, 1, 0) * torqueForce * 0.1f);
+				GetComponent<Rigidbody>().AddTorque(new Vector3(0, 1, 0) * torqueForce * 0.1f);
 			}
 		}
 		if(isEngine || isTorque){
@@ -83,7 +83,7 @@ public class EnemyMove : MonoBehaviour {
 	void SetMass(float m){
 		if(isMain){
 			mass += m;
-			rigidbody.mass = mass;
+			GetComponent<Rigidbody>().mass = mass;
 		}else{
 			mass += m;
 			if(sendedMass){

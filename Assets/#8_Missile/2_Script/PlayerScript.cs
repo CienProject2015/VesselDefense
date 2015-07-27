@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour
 				float _horizonPos = Input.GetAxis("Horizontal") * _speed * Time.deltaTime * 20;
 
 				transform.Rotate(0, _horizonPos, 0);
-				rigidbody.AddForce(transform.forward * _verticalPos); //(new Vector3(_horizonPos, 0, _verticalPos));
+				GetComponent<Rigidbody>().AddForce(transform.forward * _verticalPos); //(new Vector3(_horizonPos, 0, _verticalPos));
 				//transform.localPosition += new Vector3(0, 0, _verticalPos);
 
 			}
